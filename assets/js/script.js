@@ -1,3 +1,19 @@
+document.addEventListener("DOMContentLoaded", function() {
+    let buttons = document.getElementsByTagName("button");
+
+    for (let button of buttons) {
+        button.addEventListener("click", function() {
+            if (this.getAttribute("data-type") === "submit") {
+                alert("You clicked the Submit button")
+            } else {
+                let gametype = this.getAttribute("data-type");
+                alert(`You clicked ${gametype}`);
+            }
+        })
+    }
+})
+
+
 function runGame() {
 
 }
