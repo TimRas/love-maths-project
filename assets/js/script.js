@@ -6,19 +6,28 @@ document.addEventListener("DOMContentLoaded", function() {
             if (this.getAttribute("data-type") === "submit") {
                 alert("You clicked the Submit button")
             } else {
-                let gametype = this.getAttribute("data-type");
-                alert(`You clicked ${gametype}`);
+                let gameType = this.getAttribute("data-type");
+                runGame(gameType);
             }
         })
     }
+
+    runGame("addition")
 })
 
 
-function runGame() {
+function runGame(gameType) {
 
     // creates two numbers between 1 and 25
     let num1 = Math.floor(Math.random() * 25 +1);
     let num2 = Math.floor(Math.random() * 25 +1);
+
+    if (gameType === "addition") {
+        displayAdditionQuestion(num1, num2);
+    } else {
+        alert(`unknown game type: ${gameType}`);
+        throw `unknown game type ${gameType}. Aborting!`
+    }
 }
 
 function checkAnswer() {
@@ -37,8 +46,12 @@ function incrementWrongAnswer() {
 
 }
 
-function displayAdditionQuestion() {
+function displayAdditionQuestion(operand1, operand2) {
 
+    document.getElementById("operand1").textContent = operand1;
+    document.getElementById("operand2").textContent = operand2;
+    document.getElementById("operator").textContent = "+";
+    
 }
 
 function displaySubtractQuestion() {
